@@ -17,3 +17,9 @@ def catch_all(path):
 
     return render_template('root.html')
 
+@app.route('/')
+def homepage():
+    """Show homepage."""
+
+    return render_template('root.html')
+
