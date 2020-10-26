@@ -5,5 +5,7 @@ import json
 import random
 
 # instantiate Flask class
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/',
+                  static_folder='build',
+                  template_folder='build')
 
