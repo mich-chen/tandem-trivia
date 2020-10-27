@@ -1,12 +1,10 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import QuestionsContainer from './questions.jsx';
 
-function Homepage() {
-  // fetch questions from json to start trivia
+function Homepage(props) {
+  // update state to start trivia game
   const handleClick = () => {
-    alert('hello, button successfully clicked!');
-    
+    props.setStartGame(true);
   };
 
   return (
@@ -14,7 +12,6 @@ function Homepage() {
       <h1>Welcome to Tandem Trivia For 400!</h1>
       <Button onClick={handleClick}> Start Trivia! 
       </Button>
-      <QuestionsContainer />
     </div>
       );
 }
