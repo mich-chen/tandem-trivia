@@ -31,8 +31,8 @@ def get_questions():
     data = json.load(file)
     # data list of dictionaries of questions
     for question in data:
-        question['choices'] = question['incorrect'].append(question['correct'])
-    print(data)
+        question['choices'] = question['incorrect'] + [question['correct']]
+    # print(data)
 
     return jsonify(data)
 
