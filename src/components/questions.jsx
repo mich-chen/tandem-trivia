@@ -1,9 +1,11 @@
 import React from "react";
-import jsonData from '../Apprentice_TandemFor400_Data.json';
+// import jsonData from '../Apprentice_TandemFor400_Data.json';
 
-function QuestionsContainer() {
-  const data = JSON.parse(JSON.stringify(jsonData));
-  console.log(data);
+function QuestionsContainer(props) {
+  // const data = JSON.parse(JSON.stringify(jsonData));
+  console.log(props);
+
+
   return (
     <div>
       hello

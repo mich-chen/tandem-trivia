@@ -26,10 +26,9 @@ def homepage():
 @app.route('/api/questions', methods=['GET'])
 def get_questions():
     """Retrieve question and choices."""
-
-    file = open('./Apprentice_TandemFor400_Data.json')
+    print('in get questions\n\n\n\n')
+    file = open('src/Apprentice_TandemFor400_Data.json')
     data = json.load(file)
-    print(data)
     # data list of dictionaries of questions
     for question in data:
         question['choices'] = question['incorrect'].append(question['correct'])

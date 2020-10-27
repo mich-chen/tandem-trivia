@@ -6,11 +6,20 @@ import QuestionsContainer from './questions.jsx';
 
 function App() {
   const [startGame, setStartGame] = React.useState(false);
+  const [questions, setQuestions] = React.useState([]);
+
+  // retrieve questions data and cache as state
+  React.useEffect(() => {
+    console.log('in App useEffect');
+    fetch('/api/questions')
+    .then(res => res.json())
+    .then(data => setQuestions(data))
+  }, []);
 
   return (
     <div className="App">
       {!startGame ? <Homepage setStartGame={setStartGame}/>
-                  : <QuestionsContainer />
+                  : <QuestionsContainer questions={questions}/>
               }
     </div>
   );
