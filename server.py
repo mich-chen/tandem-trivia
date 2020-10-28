@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, redirect, request
 
 import os
 import json
-import random
+from random import randint
 
 # instantiate Flask class
 app = Flask(__name__, static_folder='build',
@@ -32,9 +32,18 @@ def get_questions():
     # data list of dictionaries of questions
     for question in data:
         question['choices'] = question['incorrect'] + [question['correct']]
-    # print(data)
 
-    return jsonify(data)
+    # generate 10 random indices and return these 10 questions to client
+    questions = []
+    while len(questions) < 10:
+        idx = randint(0, 20)
+        selected = data[idx]
+        selected['choices'] = selected['incorrect'] + [selected['correct']]
+        questions.append(selected)
+    
+    # print(questions)
+
+    return jsonify(questions)
 
 
 if __name__ == '__main__':
