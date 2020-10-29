@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, ToggleButton } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 // import jsonData from '../Apprentice_TandemFor400_Data.json';
 
 function Question(props) {
@@ -14,6 +15,7 @@ function Question(props) {
 
 function MultipleChoices(props) {
   const { choices } = props.current;
+  console.log('choices', choices);
   let { selected, setSelected } = props;
   const [shuffled, setShuffled] = React.useState([]);
 
@@ -28,24 +30,25 @@ function MultipleChoices(props) {
     setShuffled(new_shuffled)
   },[choices]);
 
-  const handleClick = (e, ans) => {
-    setSelected(ans)
+  const handleClick = (e) => {
+    console.log(e.target.value);
+    setSelected(e.target.value)
   };
 
   return (
-    <ul>
+    <ButtonGroup toggle>
       {shuffled.map((answer) => 
         <ToggleButton key={shuffled.indexOf(answer)}
                       type='radio'
                       name='radio'
                       value={answer}
                       checked={selected === answer}
-                      onClick={(e) => {handleClick(e, answer)}}
+                      onChange={(e) => {setSelected(e.target.value)}}
                       >
           {answer}
-        </ToggleButton>)
-      }
-    </ul>
+        </ToggleButton>
+    )}
+    </ButtonGroup>
     );
 }
 
@@ -82,8 +85,8 @@ function QuestionsContainer(props) {
     setShowAnswer(false);
     // increase current number
     setCurrentNum(currentNum + 1);
-    // move idx to corresponding index in array
-    let idx = currentNum - 1;
+    // move idx for array of questions
+    let idx = currentNum;
     setCurrentQ(questions[idx]);
     let new_asked = asked;
     setAsked(new_asked.concat(idx))
@@ -109,22 +112,34 @@ function QuestionsContainer(props) {
     <div>
       <Question current={currentQ}
                 number={currentNum} />
+
+      <br />
+
       <MultipleChoices current={currentQ}
                        selected={selected}
                        setSelected={setSelected} />
 
-      <Button onClick={submitAnswer}
+      <br />
+      
+      <Button variant='primary'
+              onClick={submitAnswer}
               disabled={asked.length === 10}>
         Submit
       </Button>
 
+      <br />
+
       {showAnswer ? <CorrectAnswer answer={currentQ.correct}/> : null}
 
+      <br />
+      
       <Button onClick={handleNext}
               disabled={asked.length === 10}>
         Next Question
       </Button>
 
+      <br />
+      
       {currentNum === 10 ? <Button onClick={handleFinish}>
         See Score!
       </Button>
