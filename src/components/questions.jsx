@@ -27,8 +27,10 @@ function QuestionsContainer(props) {
   const [currentQ, setCurrentQ] = React.useState(questions[0]);
   const [currentNum, setCurrentNum] = React.useState(1);
   const [selected, setSelected] = React.useState('');
+  const [asked, setAsked] = React.useState(0);
   const [showAnswer, setShowAnswer] = React.useState(false);
   const [showColor, setShowColor] = React.useState(false);
+  console.log(asked);
 
   const submitAnswer = () => {
     currentQ.submitted = selected;
@@ -38,7 +40,8 @@ function QuestionsContainer(props) {
       currentQ.correctResult = true
     };
     setShowAnswer(true);
-    setShowColor(true)
+    setShowColor(true);
+    setAsked(asked + 1)
   };
 
   const handlePrev = () => {
@@ -52,16 +55,20 @@ function QuestionsContainer(props) {
     // hide correct answer, reset colors, increase current Number
     setShowAnswer(false);
     setShowColor(false);
+    setSelected('');
     let idx = currentNum;
     setCurrentNum(currentNum + 1);
     // move idx for array of questions
-    console.log(idx);
     setCurrentQ(questions[idx]);
   };
 
   const handleFinish = () => {
-    setStartGame(false);
-    setEndGame(true)
+    if (asked !== 10) {
+      alert('You must answer all questions to see score!')
+    } else {
+      setStartGame(false);
+      setEndGame(true)
+    }
   };
 
   return (
@@ -85,7 +92,7 @@ function QuestionsContainer(props) {
       
       <Button variant='primary'
               onClick={submitAnswer}
-              disabled={showAnswer || currentQ.submitted}>
+              disabled={(showAnswer || currentQ.submitted) || !selected}>
         Submit
       </Button>
 
