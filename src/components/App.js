@@ -19,7 +19,7 @@ function App() {
       {!startGame && !endGame ? <Homepage setStartGame={setStartGame}
                                           setQuestions={setQuestions} /> 
        : !startGame && endGame ? <Results results={results}
-                                          setStartGame={setStartGame}
+                                          setQuestions={setQuestions}
                                           setEndGame={setEndGame}
                                           setResults={setResults} /> 
        : questions.length !==0 ? <QuestionsContainer questions={questions}
