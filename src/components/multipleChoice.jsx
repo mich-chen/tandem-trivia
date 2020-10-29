@@ -5,9 +5,8 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import './questions.jsx';
 
 function MultipleChoices(props) {
-  const { choices } = props.current;
-  console.log('choices', choices);
-  let { selected, setSelected } = props;
+  const { choices, correct, incorrect } = props.current;
+  let { selected, setSelected, showColor } = props;
   const [shuffled, setShuffled] = React.useState([]);
 
   // shuffle multiple choice answers
@@ -21,6 +20,11 @@ function MultipleChoices(props) {
     setShuffled(new_shuffled)
   },[choices]);
 
+  const COLOR = {
+    true: 'green',
+    false: 'grey'
+  }
+
   return (
     <ButtonGroup toggle>
       {shuffled.map((answer) => 
@@ -28,6 +32,7 @@ function MultipleChoices(props) {
                       type='radio'
                       name='radio'
                       value={answer}
+                      style={showColor ? {backgroundColor: COLOR[answer === correct]} : null}
                       checked={selected === answer}
                       onChange={(e) => {setSelected(e.target.value)}}
                       >

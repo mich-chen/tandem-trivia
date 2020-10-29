@@ -30,6 +30,7 @@ function QuestionsContainer(props) {
   const [asked, setAsked] = React.useState([0]);
   const [selected, setSelected] = React.useState('');
   const [showAnswer, setShowAnswer] = React.useState(false);
+  const [showColor, setShowColor] = React.useState(false);
 
   const submitAnswer = () => {
     if (selected === currentQ.correct) {
@@ -39,7 +40,8 @@ function QuestionsContainer(props) {
     } else {
       alert('wrong!')
     };
-    setShowAnswer(true)
+    setShowAnswer(true);
+    setShowColor(true)
   };
 
   const handlePrev = () => {
@@ -47,9 +49,9 @@ function QuestionsContainer(props) {
   };
 
   const handleNext = () => {
-    // hide correct answer for next question
+    // hide correct answer, reset colors, increase current Number
     setShowAnswer(false);
-    // increase current number
+    setShowColor(false);
     setCurrentNum(currentNum + 1);
     // move idx for array of questions
     let idx = currentNum;
@@ -72,7 +74,8 @@ function QuestionsContainer(props) {
 
       <MultipleChoices current={currentQ}
                        selected={selected}
-                       setSelected={setSelected} />
+                       setSelected={setSelected}
+                       showColor={showColor} />
 
       <br />
       
