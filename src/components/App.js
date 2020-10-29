@@ -24,7 +24,9 @@ function App() {
   return (
     <div className="App">
       {!startGame && !endGame ? <Homepage setStartGame={setStartGame} /> 
-       : !startGame && endGame ? <Results results={results}/> 
+       : !startGame && endGame ? <Results results={results}
+                                          setStartGame={setStartGame}
+                                          setEndGame={setEndGame} /> 
        : <QuestionsContainer questions={questions}
                              results={results}
                              setResults={setResults}
