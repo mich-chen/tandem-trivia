@@ -1,6 +1,8 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
 
 import Homepage from './homepage.jsx';
 import QuestionsContainer from './questions.jsx';
@@ -11,8 +13,6 @@ function App() {
   const [questions, setQuestions] = React.useState([]);
   const [endGame, setEndGame] = React.useState(false);
   const [results, setResults] = React.useState(0);
-  console.log('questions', questions);
-  console.log('results', results);
 
   return (
     <div className="App">
