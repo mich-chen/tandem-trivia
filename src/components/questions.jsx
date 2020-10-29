@@ -91,7 +91,7 @@ function QuestionsContainer(props) {
 
       <br />
 
-      {showAnswer ? <CorrectAnswer answer={currentQ.correct}/> : null}
+      {showAnswer || currentQ.submitted ? <CorrectAnswer answer={currentQ.correct}/> : null}
 
       <br />
 
