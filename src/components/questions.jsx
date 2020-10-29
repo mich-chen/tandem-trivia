@@ -3,16 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 import MultipleChoices from './multipleChoice.jsx';
 import CorrectAnswer from './correctAnswer.jsx';
-
-function Question(props) {
-  const { question } = props.current;
-  return (
-    <div>
-      {props.number}. {question}
-    </div>
-    );
-}
-
+import Question from './questionPrompt.jsx';
 
 function QuestionsContainer(props) {
   const { questions, results, setResults, setStartGame, setEndGame } = props;
