@@ -3,7 +3,7 @@ import React from "react";
 function Question(props) {
   const { question } = props.current;
   return (
-    <div>
+    <div className="question">
       {props.number}. {question}
     </div>
     );

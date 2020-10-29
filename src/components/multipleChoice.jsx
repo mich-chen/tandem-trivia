@@ -36,9 +36,10 @@ function MultipleChoices(props) {
   }
 
   return (
-    <ButtonGroup toggle>
+    <ButtonGroup toggle className="answer-choices">
       {shuffled.map((answer) => 
         <ToggleButton key={shuffled.indexOf(answer)}
+                      className="answer"
                       type='radio'
                       name='radio'
                       value={answer}

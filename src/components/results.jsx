@@ -10,13 +10,14 @@ function Results(props) {
   }
 
   return (
-    <div>
+    <div className="results">
       <h2> Congratulations! </h2>
       <h3> You got {results} out of 10 correct! </h3>
 
       <br />
 
-      <Button onClick={handleClick}>
+      <Button className="play-again" 
+              onClick={handleClick}>
         Click here to play again!
       </Button>
     </div>

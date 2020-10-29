@@ -11,9 +11,11 @@ function Homepage(props) {
   };
 
   return (
-    <div>
+    <div className="homepage">
       <h1>Welcome to Tandem Trivia For 400!</h1>
-      <Button onClick={handleClick}> Start Trivia! 
+      <Button className="start-game" 
+              onClick={handleClick}> 
+        Start Trivia! 
       </Button>
     </div>
       );

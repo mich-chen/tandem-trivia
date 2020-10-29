@@ -61,7 +61,7 @@ function QuestionsContainer(props) {
   };
 
   return (
-    <div>
+    <div className="questions-container">
       <Question current={currentQ}
                 number={currentNum} />
 
@@ -79,7 +79,7 @@ function QuestionsContainer(props) {
 
       <br />
       
-      <Button variant='primary'
+      <Button className="submit-btn"
               onClick={submitAnswer}
               disabled={(showAnswer || currentQ.submitted) || !selected}>
         Submit
@@ -92,17 +92,26 @@ function QuestionsContainer(props) {
       <br />
 
       {currentNum !== 1 
-        ? <Button onClick={handlePrev}> Previous Question </Button>
+        ? <Button className="prev-btn" 
+                  onClick={handlePrev}> 
+            Previous Question 
+          </Button>
         : null}
       
       {currentNum === 10
         ? null
-        : <Button onClick={handleNext}> Next Question </Button>}
+        : <Button className="next-btn" 
+                  onClick={handleNext}> 
+            Next Question 
+          </Button>}
 
       <br />
       
       {currentNum === 10 
-        ? <Button onClick={handleFinish}> See Score! </Button>
+        ? <Button className="score-btn"
+                  onClick={handleFinish}> 
+            See Score! 
+          </Button>
         : null }
     </div>
   );
