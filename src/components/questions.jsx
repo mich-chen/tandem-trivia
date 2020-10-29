@@ -28,12 +28,15 @@ function QuestionsContainer(props) {
   const [currentNum, setCurrentNum] = React.useState(1);
   const [asked, setAsked] = React.useState([0]);
   const [selected, setSelected] = React.useState('');
-  const [showAnswer, setShowAnswer] = React.useState(false);
+  const [showAnswer, setShowAnswer] = React.useState(currentQ.submitted);
   const [showColor, setShowColor] = React.useState(false);
 
   const submitAnswer = () => {
+    currentQ.submitted = selected;
+    currentQ.correctResult = false;
     if (selected === currentQ.correct) {
       setResults(results + 1);
+      currentQ.correctResult = true
     };
     setShowAnswer(true);
     setShowColor(true)
@@ -41,19 +44,20 @@ function QuestionsContainer(props) {
 
   const handlePrev = () => {
     console.log('prev')
-
+    let idx = currentNum - 1; // previous question number
+    setCurrentNum(idx);
+    setCurrentQ(questions[idx - 1]) // zero-indexing in arrays, - 1 to idx
   };
 
   const handleNext = () => {
     // hide correct answer, reset colors, increase current Number
     setShowAnswer(false);
     setShowColor(false);
+    let idx = currentNum;
     setCurrentNum(currentNum + 1);
     // move idx for array of questions
-    let idx = currentNum;
+    console.log(idx);
     setCurrentQ(questions[idx]);
-    let new_asked = asked;
-    setAsked(new_asked.concat(idx))
   };
 
   const handleFinish = () => {
@@ -68,16 +72,21 @@ function QuestionsContainer(props) {
 
       <br />
 
-      <MultipleChoices current={currentQ}
+      {currentQ.submitted ? <MultipleChoices current={currentQ}
+                       selected={currentQ.submitted}
+                       setSelected={setSelected}
+                       showColor={true} />
+       : <MultipleChoices current={currentQ}
                        selected={selected}
                        setSelected={setSelected}
                        showColor={showColor} />
+         }
 
       <br />
       
       <Button variant='primary'
               onClick={submitAnswer}
-              disabled={showAnswer}>
+              disabled={showAnswer || currentQ.submitted}>
         Submit
       </Button>
 
@@ -97,7 +106,7 @@ function QuestionsContainer(props) {
 
       <br />
       
-      {currentNum === 10 && showAnswer 
+      {currentNum === 10 && (showAnswer || currentQ.submitted)
         ? <Button onClick={handleFinish}> See Score! </Button>
         : null }
     </div>
