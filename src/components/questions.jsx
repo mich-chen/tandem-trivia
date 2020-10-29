@@ -6,7 +6,7 @@ function Question(props) {
   const { question } = props.current;
   return (
     <div>
-      {question}
+      {props.number}. {question}
     </div>
     );
 }
@@ -15,7 +15,18 @@ function Question(props) {
 function MultipleChoices(props) {
   const { choices } = props.current;
   let { selected, setSelected } = props;
-  console.log('check if rerender');
+  const [shuffled, setShuffled] = React.useState([]);
+
+  // shuffle multiple choice answers
+  React.useEffect(() => {
+    let new_shuffled = choices.slice(0);
+    // start at len(choices)
+    for (let i = 3; i > 0; i--) {
+      let idx = Math.floor(Math.random() * (i + 1));
+      [new_shuffled[i], new_shuffled[idx]] = [new_shuffled[idx], new_shuffled[i]];
+    };
+    setShuffled(new_shuffled)
+  },[choices]);
 
   const handleClick = (e, ans) => {
     setSelected(ans)
@@ -23,8 +34,8 @@ function MultipleChoices(props) {
 
   return (
     <ul>
-      {choices.map((answer) => 
-        <ToggleButton key={choices.indexOf(answer)}
+      {shuffled.map((answer) => 
+        <ToggleButton key={shuffled.indexOf(answer)}
                       type='radio'
                       name='radio'
                       value={answer}
@@ -38,46 +49,88 @@ function MultipleChoices(props) {
     );
 }
 
+function CorrectAnswer(props) {
+  return (
+    <div>
+      {props.answer}
+    </div>
+    );
+}
+
 
 function QuestionsContainer(props) {
-  // const data = JSON.parse(JSON.stringify(jsonData));
-  const { questions } = props;
-  const [currentQ, setCurrentQ] = React.useState({});
-  const [asked, setAsked] = React.useState([]);
+  const { questions, results, setResults, setStartGame, setEndGame } = props;
+  const [currentQ, setCurrentQ] = React.useState(questions[0]);
+  const [currentNum, setCurrentNum] = React.useState(1);
+  const [asked, setAsked] = React.useState([0]);
   const [selected, setSelected] = React.useState('');
-  console.log('current', currentQ);
-  console.log('asked', asked);
+  const [showAnswer, setShowAnswer] = React.useState(false);
 
   const submitAnswer = () => {
     if (selected === currentQ.correct) {
-      alert('correct answer!')
+      alert('correct answer!');
+      // increment total correct answers
+      setResults(results + 1);
     } else {
       alert('wrong!')
     };
+    setShowAnswer(true)
   };
 
-  // 10 questions for each round of trivia
-  for (let i = 0; i < 10; i++) {
-    // logic to randomly select a question using index
-    let random = questions[Math.floor(Math.random() * questions.length)];
-    if (!asked.includes(random)) {
-        setCurrentQ(random);
-        let new_asked = asked;
-        setAsked(new_asked.concat(random))
-    };
+  const handleNext = () => {
+    // hide correct answer for next question
+    setShowAnswer(false);
+    // increase current number
+    setCurrentNum(currentNum + 1);
+    // move idx to corresponding index in array
+    let idx = currentNum - 1;
+    setCurrentQ(questions[idx]);
+    let new_asked = asked;
+    setAsked(new_asked.concat(idx))
+    // check if question has been seen or not
+    // if (!asked.includes(idx)) {
+    //     setCurrentQ(questions[idx]);
+    //     let new_asked = asked;
+    //     setAsked(new_asked.concat(idx))
+    //   } else {
+    //     let new_random = questions[idx + 1];
+    //     setCurrentQ(new_random);
+    //     let new_asked = asked;
+    //     setAsked(new_asked.concat(idx))
+    //   }
+  };
+
+  const handleFinish = () => {
+    setStartGame(false);
+    setEndGame(true)
   };
 
   return (
     <div>
-      <Question current={currentQ} />
+      <Question current={currentQ}
+                number={currentNum} />
       <MultipleChoices current={currentQ}
                        selected={selected}
                        setSelected={setSelected} />
-      <Button onClick={submitAnswer}>
+
+      <Button onClick={submitAnswer}
+              disabled={asked.length === 10}>
         Submit
       </Button>
+
+      {showAnswer ? <CorrectAnswer answer={currentQ.correct}/> : null}
+
+      <Button onClick={handleNext}
+              disabled={asked.length === 10}>
+        Next Question
+      </Button>
+
+      {currentNum === 10 ? <Button onClick={handleFinish}>
+        See Score!
+      </Button>
+      : null }
     </div>
-      );
+  );
 }
 
 export default QuestionsContainer;
