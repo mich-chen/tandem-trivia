@@ -4,7 +4,10 @@ import Button from 'react-bootstrap/Button';
 function Homepage(props) {
   // update state to start trivia game
   const handleClick = () => {
-    props.setStartGame(true);
+    fetch('/api/questions')
+    .then(res => res.json())
+    .then(data => props.setQuestions(data))
+    .then(props.setStartGame(true));
   };
 
   return (

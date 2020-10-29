@@ -11,27 +11,23 @@ function App() {
   const [questions, setQuestions] = React.useState([]);
   const [endGame, setEndGame] = React.useState(false);
   const [results, setResults] = React.useState(0);
+  console.log('questions', questions);
   console.log('results', results);
-
-  // retrieve questions data and cache as state
-  React.useEffect(() => {
-    console.log('in App useEffect');
-    fetch('/api/questions')
-    .then(res => res.json())
-    .then(data => setQuestions(data))
-  }, []);
 
   return (
     <div className="App">
-      {!startGame && !endGame ? <Homepage setStartGame={setStartGame} /> 
+      {!startGame && !endGame ? <Homepage setStartGame={setStartGame}
+                                          setQuestions={setQuestions} /> 
        : !startGame && endGame ? <Results results={results}
                                           setStartGame={setStartGame}
-                                          setEndGame={setEndGame} /> 
-       : <QuestionsContainer questions={questions}
+                                          setEndGame={setEndGame}
+                                          setResults={setResults} /> 
+       : questions.length !==0 ? <QuestionsContainer questions={questions}
                              results={results}
                              setResults={setResults}
                              setStartGame={setStartGame}
                              setEndGame={setEndGame} />
+                    : 'Loading...'
               }
 
     </div>
