@@ -2,8 +2,6 @@ import React from "react";
 import {Button, ButtonGroup} from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
-import './questions.jsx';
-
 function MultipleChoices(props) {
   const { choices, correct } = props.current;
   let { selected, setSelected, showColor } = props;
