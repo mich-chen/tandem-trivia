@@ -15,7 +15,7 @@ function App() {
   const [results, setResults] = React.useState(0);
 
   return (
-    <div className="App">
+    <div className="App container">
       {!startGame && !endGame ? <Homepage setStartGame={setStartGame}
                                           setQuestions={setQuestions} /> 
        : !startGame && endGame ? <Results results={results}
