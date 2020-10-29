@@ -30,36 +30,42 @@ function QuestionsContainer(props) {
   const [asked, setAsked] = React.useState(0);
   const [showAnswer, setShowAnswer] = React.useState(false);
   const [showColor, setShowColor] = React.useState(false);
-  console.log(asked);
+
+  // reset states at each question
+  React.useEffect(() => {
+    console.log('in use effect');
+    setShowAnswer(false);
+    setShowColor(false);
+    setSelected('');
+  },[currentQ]);
 
   const submitAnswer = () => {
+    // new property to track whether submitted and selected choice
     currentQ.submitted = selected;
-    currentQ.correctResult = false;
+    // increment results if selected correct answer
     if (selected === currentQ.correct) {
       setResults(results + 1);
-      currentQ.correctResult = true
     };
+    // reveal answer and color indication
     setShowAnswer(true);
     setShowColor(true);
     setAsked(asked + 1)
   };
 
   const handlePrev = () => {
-    console.log('prev')
-    let idx = currentNum - 1; // previous question number
+    // set states to be previous question
+    let idx = currentNum - 1; 
     setCurrentNum(idx);
-    setCurrentQ(questions[idx - 1]) // zero-indexing in arrays, - 1 to idx
+    // zero-indexing in arrays, - 1 to index into questions array
+    setCurrentQ(questions[idx - 1]); 
+    // if previous question was answered, then update state
+    questions[idx-1].submitted ? setSelected(questions[idx-1].submitted) : setSelected('');
   };
 
   const handleNext = () => {
-    // hide correct answer, reset colors, increase current Number
-    setShowAnswer(false);
-    setShowColor(false);
-    setSelected('');
-    let idx = currentNum;
+    // because zero-indexing, next question's is current number
+    setCurrentQ(questions[currentNum]);
     setCurrentNum(currentNum + 1);
-    // move idx for array of questions
-    setCurrentQ(questions[idx]);
   };
 
   const handleFinish = () => {
@@ -112,7 +118,7 @@ function QuestionsContainer(props) {
 
       <br />
       
-      {currentNum === 10 && (showAnswer || currentQ.submitted)
+      {currentNum === 10 
         ? <Button onClick={handleFinish}> See Score! </Button>
         : null }
     </div>
