@@ -123,7 +123,7 @@ function QuestionsContainer(props) {
       
       <Button variant='primary'
               onClick={submitAnswer}
-              disabled={asked.length === 10}>
+              disabled={asked.length === 11}>
         Submit
       </Button>
 
@@ -133,14 +133,14 @@ function QuestionsContainer(props) {
 
       <br />
       
-      <Button onClick={handleNext}
-              disabled={asked.length === 10}>
+      {currentNum !== 11 ? <Button onClick={handleNext}>
         Next Question
       </Button>
+       : null}
 
       <br />
       
-      {currentNum === 10 ? <Button onClick={handleFinish}>
+      {currentNum === 10 && showAnswer ? <Button onClick={handleFinish}>
         See Score!
       </Button>
       : null }
