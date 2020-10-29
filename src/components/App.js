@@ -4,6 +4,7 @@ import './App.css';
 
 import Homepage from './homepage.jsx';
 import QuestionsContainer from './questions.jsx';
+import Results from './results.jsx';
 
 function App() {
   const [startGame, setStartGame] = React.useState(false);
@@ -22,12 +23,13 @@ function App() {
 
   return (
     <div className="App">
-      {!startGame && !endGame ? <Homepage setStartGame={setStartGame} /> : 
-       !startGame && endGame ? null : <QuestionsContainer questions={questions}
-                                        results={results}
-                                        setResults={setResults}
-                                        setStartGame={setStartGame}
-                                        setEndGame={setEndGame} />
+      {!startGame && !endGame ? <Homepage setStartGame={setStartGame} /> 
+       : !startGame && endGame ? <Results results={results}/> 
+       : <QuestionsContainer questions={questions}
+                             results={results}
+                             setResults={setResults}
+                             setStartGame={setStartGame}
+                             setEndGame={setEndGame} />
               }
 
     </div>
