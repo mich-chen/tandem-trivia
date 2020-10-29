@@ -7,6 +7,9 @@ import QuestionsContainer from './questions.jsx';
 function App() {
   const [startGame, setStartGame] = React.useState(false);
   const [questions, setQuestions] = React.useState([]);
+  const [endGame, setEndGame] = React.useState(false);
+  const [results, setResults] = React.useState(0);
+  console.log('results', results);
 
   // retrieve questions data and cache as state
   React.useEffect(() => {
@@ -18,9 +21,14 @@ function App() {
 
   return (
     <div className="App">
-      {!startGame ? <Homepage setStartGame={setStartGame}/>
-                  : <QuestionsContainer questions={questions}/>
+      {!startGame && !endGame ? <Homepage setStartGame={setStartGame} /> : 
+       !startGame && endGame ? null : <QuestionsContainer questions={questions}
+                                        results={results}
+                                        setResults={setResults}
+                                        setStartGame={setStartGame}
+                                        setEndGame={setEndGame} />
               }
+
     </div>
   );
 }
