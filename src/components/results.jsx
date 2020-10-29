@@ -2,10 +2,11 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 
 function Results(props) {
-  const { results, setStartGame, setEndGame } = props;
+  const { results, setResults, setStartGame, setEndGame } = props;
   const handleClick = () => {
     setEndGame(false);
-    setStartGame(true)
+    setStartGame(true);
+    setResults(0)
   }
 
   return (
