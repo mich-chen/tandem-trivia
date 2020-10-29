@@ -5,7 +5,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import './questions.jsx';
 
 function MultipleChoices(props) {
-  const { choices, correct, incorrect } = props.current;
+  const { choices, correct } = props.current;
   let { selected, setSelected, showColor } = props;
   const [shuffled, setShuffled] = React.useState([]);
 
