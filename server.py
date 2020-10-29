@@ -35,11 +35,14 @@ def get_questions():
 
     # generate 10 random indices and return these 10 questions to client
     questions = []
+    selected_set = set()
     while len(questions) < 10:
         idx = randint(0, 20)
-        selected = data[idx]
-        selected['choices'] = selected['incorrect'] + [selected['correct']]
-        questions.append(selected)
+        if idx not in selected_set:
+            selected_set.add(idx)
+            selected = data[idx]
+            selected['choices'] = selected['incorrect'] + [selected['correct']]
+            questions.append(selected)
     
     # print(questions)
 
