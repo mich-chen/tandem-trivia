@@ -20,10 +20,6 @@ function MultipleChoices(props) {
     setShuffled(new_shuffled)
   },[choices]);
 
-  const COLOR = {
-    true: 'green',
-    false: 'grey'
-  }
   const getColor = (option) => {
     // reveal correct option as green
     if (option === correct) {

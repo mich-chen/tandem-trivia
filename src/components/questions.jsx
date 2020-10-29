@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from 'react-bootstrap';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+import Button from 'react-bootstrap/Button';
 
 import MultipleChoices from './multipleChoice.jsx';
 
@@ -34,11 +33,7 @@ function QuestionsContainer(props) {
 
   const submitAnswer = () => {
     if (selected === currentQ.correct) {
-      alert('correct answer!');
-      // increment total correct answers
       setResults(results + 1);
-    } else {
-      alert('wrong!')
     };
     setShowAnswer(true);
     setShowColor(true)
