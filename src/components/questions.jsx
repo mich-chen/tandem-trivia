@@ -2,21 +2,13 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 
 import MultipleChoices from './multipleChoice.jsx';
+import CorrectAnswer from './correctAnswer.jsx';
 
 function Question(props) {
   const { question } = props.current;
   return (
     <div>
       {props.number}. {question}
-    </div>
-    );
-}
-
-
-function CorrectAnswer(props) {
-  return (
-    <div>
-      Correct Answer is: {props.answer}
     </div>
     );
 }
