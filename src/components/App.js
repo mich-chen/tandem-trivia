@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Homepage from './homepage.jsx';
-import QuestionsContainer from './questionsContainer.jsx';
+import QuestionsContainer from './questions.jsx';
 import Results from './results.jsx';
 
 function App() {
