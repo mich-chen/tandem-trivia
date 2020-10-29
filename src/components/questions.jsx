@@ -41,6 +41,7 @@ function QuestionsContainer(props) {
 
   const handlePrev = () => {
     console.log('prev')
+
   };
 
   const handleNext = () => {
@@ -76,7 +77,7 @@ function QuestionsContainer(props) {
       
       <Button variant='primary'
               onClick={submitAnswer}
-              disabled={asked.length === 11}>
+              disabled={showAnswer}>
         Submit
       </Button>
 

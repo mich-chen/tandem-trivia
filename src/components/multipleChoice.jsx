@@ -46,6 +46,7 @@ function MultipleChoices(props) {
                       value={answer}
                       style={showColor ? {backgroundColor: getColor(answer)} : null}
                       checked={selected === answer}
+                      disabled={showColor}
                       onChange={(e) => {setSelected(e.target.value)}}
                       >
           {answer}
