@@ -24,6 +24,22 @@ function MultipleChoices(props) {
     true: 'green',
     false: 'grey'
   }
+  const getColor = (option) => {
+    // reveal correct option as green
+    if (option === correct) {
+        return ('green')
+    }
+    // if selected correct option return green
+    if (option === selected && selected === correct) {
+        return ('green')
+    // if selected option is wrong then return red
+    } else if (option === selected && selected !== correct) {
+        return ('red')
+    // unselected and incorrect choices are grey
+    } else { 
+        return ('grey')
+    }
+  }
 
   return (
     <ButtonGroup toggle>
@@ -32,7 +48,7 @@ function MultipleChoices(props) {
                       type='radio'
                       name='radio'
                       value={answer}
-                      style={showColor ? {backgroundColor: COLOR[answer === correct]} : null}
+                      style={showColor ? {backgroundColor: getColor(answer)} : null}
                       checked={selected === answer}
                       onChange={(e) => {setSelected(e.target.value)}}
                       >
