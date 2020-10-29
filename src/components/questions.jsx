@@ -27,7 +27,7 @@ function QuestionsContainer(props) {
   const [currentQ, setCurrentQ] = React.useState(questions[0]);
   const [currentNum, setCurrentNum] = React.useState(1);
   const [selected, setSelected] = React.useState('');
-  const [showAnswer, setShowAnswer] = React.useState(currentQ.submitted);
+  const [showAnswer, setShowAnswer] = React.useState(false);
   const [showColor, setShowColor] = React.useState(false);
 
   const submitAnswer = () => {
