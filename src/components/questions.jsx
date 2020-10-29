@@ -26,7 +26,6 @@ function QuestionsContainer(props) {
   const { questions, results, setResults, setStartGame, setEndGame } = props;
   const [currentQ, setCurrentQ] = React.useState(questions[0]);
   const [currentNum, setCurrentNum] = React.useState(1);
-  const [asked, setAsked] = React.useState([0]);
   const [selected, setSelected] = React.useState('');
   const [showAnswer, setShowAnswer] = React.useState(currentQ.submitted);
   const [showColor, setShowColor] = React.useState(false);
