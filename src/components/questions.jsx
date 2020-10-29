@@ -16,7 +16,7 @@ function Question(props) {
 function CorrectAnswer(props) {
   return (
     <div>
-      {props.answer}
+      Correct Answer is: {props.answer}
     </div>
     );
 }
