@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup } from 'react-bootstrap';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-// import jsonData from '../Apprentice_TandemFor400_Data.json';
 
 function Question(props) {
   const { question } = props.current;
@@ -29,11 +28,6 @@ function MultipleChoices(props) {
     };
     setShuffled(new_shuffled)
   },[choices]);
-
-  const handleClick = (e) => {
-    console.log(e.target.value);
-    setSelected(e.target.value)
-  };
 
   return (
     <ButtonGroup toggle>
@@ -80,6 +74,10 @@ function QuestionsContainer(props) {
     setShowAnswer(true)
   };
 
+  const handlePrev = () => {
+    console.log('prev')
+  };
+
   const handleNext = () => {
     // hide correct answer for next question
     setShowAnswer(false);
@@ -90,17 +88,6 @@ function QuestionsContainer(props) {
     setCurrentQ(questions[idx]);
     let new_asked = asked;
     setAsked(new_asked.concat(idx))
-    // check if question has been seen or not
-    // if (!asked.includes(idx)) {
-    //     setCurrentQ(questions[idx]);
-    //     let new_asked = asked;
-    //     setAsked(new_asked.concat(idx))
-    //   } else {
-    //     let new_random = questions[idx + 1];
-    //     setCurrentQ(new_random);
-    //     let new_asked = asked;
-    //     setAsked(new_asked.concat(idx))
-    //   }
   };
 
   const handleFinish = () => {
@@ -132,18 +119,20 @@ function QuestionsContainer(props) {
       {showAnswer ? <CorrectAnswer answer={currentQ.correct}/> : null}
 
       <br />
+
+      {currentNum !== 1 
+        ? <Button onClick={handlePrev}> Previous Question </Button>
+        : null}
       
-      {currentNum !== 11 ? <Button onClick={handleNext}>
-        Next Question
-      </Button>
-       : null}
+      {currentNum === 10 && showAnswer
+        ? null
+        : <Button onClick={handleNext}> Next Question </Button>}
 
       <br />
       
-      {currentNum === 10 && showAnswer ? <Button onClick={handleFinish}>
-        See Score!
-      </Button>
-      : null }
+      {currentNum === 10 && showAnswer 
+        ? <Button onClick={handleFinish}> See Score! </Button>
+        : null }
     </div>
   );
 }
