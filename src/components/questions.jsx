@@ -124,7 +124,7 @@ function QuestionsContainer(props) {
         ? <Button onClick={handlePrev}> Previous Question </Button>
         : null}
       
-      {currentNum === 10 && showAnswer
+      {currentNum === 10
         ? null
         : <Button onClick={handleNext}> Next Question </Button>}
 
