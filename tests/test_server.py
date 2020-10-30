@@ -48,7 +48,7 @@ class HelperTests(TestCase):
     def test_shuffle(self, mock):
 
         helper.shuffle(self.data)
-        # mock.called to spy if random.shuffle() 
+        # mock.called to spy if random.shuffle() was called
         self.assertTrue(mock.called)
         self.assertEqual(14, len(self.data))
 
