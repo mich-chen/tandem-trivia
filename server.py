@@ -1,13 +1,16 @@
 from flask import Flask, render_template, jsonify, redirect, request
 
-import os
 import json
 import random
+import helper
 
 # instantiate Flask class
 app = Flask(__name__, static_folder='build',
                       template_folder='build',
                       static_url_path = '/')
+
+
+FILE = 'src/Apprentice_TandemFor400_Data.json'
 
 # catch all
 @app.route('/', defaults={'path': ''})
@@ -26,17 +29,12 @@ def homepage():
 @app.route('/api/questions', methods=['GET'])
 def get_questions():
     """Retrieve question and choices."""
-    print('in get questions\n\n\n\n')
-    file = open('src/Apprentice_TandemFor400_Data.json')
-    data = json.load(file)
-    # data list of dictionaries of questions
-    for question in data:
-        question['choices'] = question['incorrect'] + [question['correct']]
 
+    data = helper.open_file(FILE)
     # shuffle questions
-    random.shuffle(data)
-    # return 10 random questions to client, cannot be repeated questions
-    questions = data[:11]
+    helper.shuffle(data)
+    helper.add_choices_lst(data)
+    questions = helper.slice_list(data, 10)
 
     return jsonify(questions)
 
