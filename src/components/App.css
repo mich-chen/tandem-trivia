@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.container {
+  background: rgba(244, 249, 244, 0.80);
+  border-radius: 25px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
