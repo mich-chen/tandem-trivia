@@ -17,6 +17,7 @@ function Results(props) {
       <br />
 
       <Button className="play-again" 
+              data-testid="play-again"
               onClick={handleClick}>
         Click here to play again!
       </Button>
