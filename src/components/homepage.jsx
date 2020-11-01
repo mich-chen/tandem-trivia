@@ -13,7 +13,8 @@ function Homepage(props) {
   return (
     <div className="homepage">
       <h1>Welcome to Tandem Trivia For 400!</h1>
-      <Button className="start-game" 
+      <Button className="start-game"
+              data-testid="start-btn"
               onClick={handleClick}> 
         Start Trivia! 
       </Button>
