@@ -40,7 +40,7 @@ function MultipleChoices(props) {
       {shuffled.map((answer) => 
         <ToggleButton key={shuffled.indexOf(answer)}
                       className="answer"
-                      data-testid={shuffled.indexOf(answer) + 1}
+                      data-testid={answer}
                       type='radio'
                       name='radio'
                       value={answer}
