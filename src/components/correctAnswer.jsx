@@ -2,7 +2,7 @@ import React from "react";
 
 function CorrectAnswer(props) {
   return (
-    <div className="correct-answer">
+    <div data-testid="correct-answer" className="correct-answer">
       Correct Answer is: {props.answer}
     </div>
     );
