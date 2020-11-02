@@ -1,8 +1,41 @@
 # Welcome to Tandem Trivia!
 
-Tandem trivia is a training trivia app on Tandem knowledge! Each round of trivia includes 10 randomized, non-repeating questions. Users may skip and return to questions and see previously submitted questions. Correct answers are revealed upon submitting. At the end, once users have answered all 10 questions, users may see their final score and play again! 
+Tandem trivia is a training trivia app on Tandem knowledge! Users may answer, skip, return to 10 random non-repeating questions and see their final score at the end. Play and train as much as you'd like to master your Tandem knowledge!
 
-## Installation
+## Tech Stack
+
+* React
+* JavaScript
+* Python
+* Flask
+* HTML
+* CSS
+
+## Features
+
+* Each round of trivia consists of 10 random, non-repeating questions.
+
+* View one question at a time with 4 multiple choice questions
+
+* Select one choice out of four
+
+* Upon submitting an answer, correct answer is revealed and choices reflect colors
+
+* Users may traverse forward and backwards to skip and return to skipped questions.
+
+* Previously submitted questions will reflect user's submission
+
+* Users may view their score at the end, after completing all 10 questions
+
+* Users may play unlimited amount of times! :) 
+
+## Getting Started
+
+### Clone repository
+
+```
+$ git clone https://github.com/mich-chen/tandem-trivia
+```
 
 ### Package managers
 
