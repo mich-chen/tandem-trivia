@@ -1,8 +1,6 @@
 # Welcome to Tandem Trivia!
 
-
-
-
+Tandem trivia is a training trivia app on Tandem knowledge! Each round of trivia includes 10 randomized, non-repeating questions. Users may skip and return to questions and see previously submitted questions. Correct answers are revealed upon submitting. At the end, once users have answered all 10 questions, users may see their final score and play again! 
 
 ## Installation
 
