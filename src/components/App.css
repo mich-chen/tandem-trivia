@@ -5,6 +5,7 @@
 .container {
   background: rgba(244, 249, 244, 0.80);
   border-radius: 25px;
+  margin-top: 150px;
 }
 
 .App-logo {
