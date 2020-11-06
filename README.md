@@ -1,4 +1,4 @@
-# Welcome to Tandem Trivia!
+# Welcome to Tandem Trivia! :bulb: :video_game:
 
 Tandem trivia is a training trivia app on Tandem knowledge! Users may answer, skip, return to 10 random non-repeating questions and see their final score at the end. Play and train as much as you'd like to master your Tandem knowledge!
 
@@ -30,6 +30,8 @@ Tandem trivia is a training trivia app on Tandem knowledge! Users may answer, sk
 * Users may view their score at the end, after completing all 10 questions
 
 * Users may play unlimited amount of times! :) 
+
+![see-score](https://user-images.githubusercontent.com/62639321/98422205-eb70d180-203f-11eb-9adc-1e0dac6a50ad.gif)
 
 ## Getting Started
 
