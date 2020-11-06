@@ -17,13 +17,15 @@ Tandem trivia is a training trivia app on Tandem knowledge! Users may answer, sk
 
 * View one question at a time with 4 multiple choice questions
 
-* Select one choice out of four
-
 * Upon submitting an answer, correct answer is revealed and choices reflect colors
+
+![start-game](https://user-images.githubusercontent.com/62639321/98421434-2e31aa00-203e-11eb-9653-31263c3b89c7.gif)
 
 * Users may traverse forward and backwards to skip and return to skipped questions.
 
 * Previously submitted questions will reflect user's submission
+
+![show-traversing](https://user-images.githubusercontent.com/62639321/98421450-37227b80-203e-11eb-873a-bbb8e4ceb09e.gif)
 
 * Users may view their score at the end, after completing all 10 questions
 
