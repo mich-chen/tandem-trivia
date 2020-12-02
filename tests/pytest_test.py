@@ -1,5 +1,4 @@
 import pytest
-from mock import patch
 
 import server
 from server import app
@@ -7,18 +6,16 @@ from server import app
 import random
 import helper
 
+# ******* Globally define test data file ************
 @pytest.fixture(autouse=True)
 def file_path():
     server.FILE = 'tests/test_data.json'
     yield server.FILE
 
-@patch('server.FILE', 'tests/test_data.json')
-def test_file_path():
-    assert server.FILE == 'tests/test_data.json'
-
 def test_file_path_fixture(file_path):
     assert server.FILE == 'tests/test_data.json'
 
+# *************** Test Flask App ****************
 class TestFlask:
 
     # setup Flask test client and file path
@@ -27,6 +24,7 @@ class TestFlask:
         app.config['TESTING'] = True
         self.data = helper.open_file('test_data.json')
 
-
+    # test setup function
     def test_setup(self):
         assert self.data != None
+
