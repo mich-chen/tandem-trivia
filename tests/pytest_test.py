@@ -32,7 +32,7 @@ class TestFlask:
 
     def test_homepage(self):
         result = self.client.get('/')
-        assert b'<!doctype html>' in result.data
+        assert b'<!doctype html>' in result.data, 'no return html template'
 
     def test_get_questions(self):
         result = self.client.get('/api/questions')
@@ -71,6 +71,7 @@ class TestHelpers:
 
     def test_slice_list(self):
         result = helper.slice_list(self.data, 10)
+        assert len(result) == 10, 'not sliced 10'
 
 
 
