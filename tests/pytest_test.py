@@ -73,10 +73,10 @@ class TestHelpers:
         result = helper.slice_list(self.data, 10)
         assert len(result) == 10, 'not sliced 10'
 
+    def test_add_choices(self):
+        helper.add_choices_lst(self.data)
+        # check choices is a list with length 4 for each question
+        assert all(len(q['choices']) == 4for q in self.data)
 
-
-
-
-
-
-
+if __name__ == '__main__':
+    pytest.main(verbosity=2)
