@@ -1,4 +1,5 @@
 import pytest
+from pytest_mock import mocker
 
 import server
 from server import app
@@ -58,4 +59,15 @@ class TestHelpers:
 
     def test_open_file(self):
         assert isinstance(self.data, list), 'Not a list, should be list'
+
+    def test_shuffle_spy(self, mocker):
+        spy = mocker.spy(helper, 'shuffle')
+        assert helper.shuffle(self.data) != self.data, 'did not shuffle'
+        # check spy called shuffle function and returned value is shuffled
+        spy.assert_called_once_with(self.data)
+        assert spy.spy_return != self.data, 'did not shuffle spy'
+
+
+
+
 
