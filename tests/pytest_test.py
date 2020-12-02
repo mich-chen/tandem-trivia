@@ -42,7 +42,7 @@ class TestFlask:
     def test_questions_length(self):
         result = self.client.get('/api/questions')
         # check return 10 questions
-        assert len(self.data) != len(result.json), 'should return 10 Qs, result is not 10 Qs'
+        assert len(result.json) == 10, 'should return 10 Qs, result is not 10 Qs'
 
     def test_choices(self):
         result = self.client.get('/api/questions')
@@ -68,6 +68,10 @@ class TestHelpers:
         # check function called and returned value is shuffled
         spy.assert_called_once_with(self.data)
         assert spy.spy_return != self.data, 'did not shuffle spy'
+
+    def test_slice_list(self):
+        result = helper.slice_list(self.data, 10)
+
 
 
 
