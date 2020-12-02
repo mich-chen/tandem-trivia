@@ -24,7 +24,7 @@ class TestFlask:
     def setup_method(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
-        self.data = helper.open_file('tests/test_data.json')
+        self.data = helper.open_file(server.FILE)
 
     def test_setup(self):
         assert self.data != None
@@ -50,3 +50,12 @@ class TestFlask:
 
 
 # *********************** Test Helper Functions ***************************
+
+class TestHelpers:
+
+    def setup_method(self):
+        self.data = helper.open_file(server.FILE)
+
+    def test_open_file(self):
+        assert isinstance(self.data, list), 'Not a list, should be list'
+
