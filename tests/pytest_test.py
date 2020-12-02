@@ -33,5 +33,14 @@ class TestFlask:
         result = self.client.get('/')
         assert b'<!doctype html>' in result.data
 
+    def test_get_questions(self):
+        result = self.client.get('/api/questions')
+        # check returned questions are not same as original data file
+        assert self.data != result.json, 'result is same as data file'
+        # check return 10 questions
+        assert len(self.data) != len(result.json), 'should return 10 Qs, result is not 10 Qs'
+
+        # check 'choices' key added to each question
+
 
 # *********************** Test Helper Functions ***************************
