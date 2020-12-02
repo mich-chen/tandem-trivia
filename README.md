@@ -81,7 +81,7 @@ $ python3 server.py
 npm start
 ```
 
-#### You may now access the app at localhost:5000
+#### You may now access the app at localhost:5000 and/or localhost:3000
 
 
 ## Getting Started with Create React App
