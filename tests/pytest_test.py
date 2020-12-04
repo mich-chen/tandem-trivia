@@ -37,6 +37,11 @@ class TestFlask:
         result = self.client.get('/')
         assert b'<!doctype html>' in result.data, 'no return html template'
 
+    def test_status_code(self):
+        result = self.client.get('/api/questions')
+        print(result.status_code)
+        assert result.status_code == 200
+
     def test_get_questions(self):
         result = self.client.get('/api/questions')
         # check returned questions are not same as original data file
@@ -64,13 +69,17 @@ class TestHelpers:
         assert isinstance(self.data, list), 'Not a list, should be list'
 
     def test_shuffle_spy(self, mocker):
+        mocker.patch('random.shuffle', side_effect=lambda x: x.reverse())
         # set up spy
-        spy = mocker.spy(random, 'shuffle')
+        # spy = mocker.spy(random, 'shuffle')
         # call helper function
-        assert helper.shuffle(self.data) != self.data, 'did not shuffle' 
+        lst = [1, 2, 3, 4, 5]
+        # helper.shuffle(lst)
+        random.shuffle(lst)
+        assert lst == [5, 4, 3, 2, 1] , 'did not shuffle' 
         # check function called and returned value is shuffled
-        spy.assert_called_once_with(self.data)
-        assert spy.spy_return != self.data, 'did not shuffle spy'
+        # spy.assert_called_once_with(self.data)
+        # assert spy.spy_return != self.data, 'did not shuffle spy'
 
     def test_slice_list(self):
         result = helper.slice_list(self.data, 10)
