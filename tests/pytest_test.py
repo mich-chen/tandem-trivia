@@ -62,7 +62,7 @@ class TestHelpers:
 
     def test_shuffle_spy(self, mocker):
         # set up spy
-        spy = mocker.spy(helper, 'shuffle')
+        spy = mocker.spy(random, 'shuffle')
         # call helper function
         assert helper.shuffle(self.data) != self.data, 'did not shuffle' 
         # check function called and returned value is shuffled
@@ -76,8 +76,8 @@ class TestHelpers:
     def test_add_choices(self):
         helper.add_choices_lst(self.data)
         # check choices is a list with length 4 for each question
-        assert all(len(q['choices']) == 4for q in self.data)
+        assert all(len(q['choices']) == 4 for q in self.data)
 
 if __name__ == '__main__':
-    pytest.main(verbosity=2)
     
+    pytest.main(verbosity=2)
