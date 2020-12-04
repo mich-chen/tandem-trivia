@@ -16,12 +16,15 @@ def file_path():
 
 def test_file_path_fixture(file_path):
     assert server.FILE == 'tests/test_data.json'
+    
 
 # ************************** Test Flask App *******************************
 
+@pytest.mark.usefixtures("setup_method")
 class TestFlask:
 
     # setup Flask test client and file path
+    @pytest.fixture(autouse=True)
     def setup_method(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
