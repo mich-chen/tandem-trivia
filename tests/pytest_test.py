@@ -68,7 +68,9 @@ class TestHelpers:
     def test_open_file(self):
         assert isinstance(self.data, list), 'Not a list, should be list'
 
-    def test_shuffle_spy(self, mocker):
+    def test_shuffle_patch(self, mocker):
+        # need to test side effect which is in-place change
+        # random.shuffle does not have return value
         mocker.patch('random.shuffle', side_effect=lambda x: x.reverse())
         # set up spy
         # spy = mocker.spy(random, 'shuffle')
