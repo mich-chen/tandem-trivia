@@ -1,5 +1,10 @@
 import pytest
-from pytest_mock import mocker
+# from pytest_mock import mocker
+
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 import server
 from server import app
@@ -11,11 +16,11 @@ import helper
 
 @pytest.fixture(autouse=True)
 def file_path():
-    server.FILE = 'tests/test_data.json'
+    server.FILE = 'test_data.json'
     yield server.FILE
 
 def test_file_path_fixture(file_path):
-    assert server.FILE == 'tests/test_data.json'
+    assert server.FILE == 'test_data.json'
     
 
 # ************************** Test Flask App *******************************
@@ -94,4 +99,5 @@ class TestHelpers:
 
 if __name__ == '__main__':
     
-    pytest.main(verbosity=2)
+    # args is List[str] of command line args
+    pytest.main(['-v']) 

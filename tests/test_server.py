@@ -1,11 +1,17 @@
 from unittest import TestCase
-import server
-from server import app
 from mock import patch
 import random
+
+# import server module from parent directory
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+import server
+from server import app
 import helper
 
-@patch('server.FILE', 'tests/test_data.json')
+@patch('server.FILE', 'test_data.json')
 class FlaskTests(TestCase):
 
     def setUp(self):
@@ -15,11 +21,11 @@ class FlaskTests(TestCase):
         # show Flask errors that happen during tests
         app.config['TESTING'] = True
         # FILE = 'tests/test_data.json'
-        self.data = helper.open_file('tests/test_data.json')
+        self.data = helper.open_file('test_data.json')
 
     def test_file_path(self):
 
-        self.assertEqual('tests/test_data.json', server.FILE)
+        self.assertEqual('test_data.json', server.FILE)
 
     def test_homepage(self):
 
@@ -37,7 +43,7 @@ class HelperTests(TestCase):
 
     def setUp(self):
 
-        self.data = helper.open_file('tests/test_data.json')
+        self.data = helper.open_file('test_data.json')
 
     def test_open_file(self):
 
