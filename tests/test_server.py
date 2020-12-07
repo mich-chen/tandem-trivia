@@ -11,6 +11,7 @@ import server
 from server import app
 import helper
 
+
 @patch('server.FILE', 'test_data.json')
 class FlaskTests(TestCase):
 
