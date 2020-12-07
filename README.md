@@ -83,6 +83,14 @@ npm start
 
 #### You may now access the app at localhost:5000 and/or localhost:3000
 
+### Running Tests
+
+**Make sure you're in the parent project directory (/Tandem-Apprentice-Challenge-2020)**
+
+#### `python3 runtests.py`
+
+Script to run all Pytest and Unittest files verbosely 
+
 
 ## Getting Started with Create React App
 
