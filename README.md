@@ -10,6 +10,8 @@ Tandem trivia is a training trivia app on Tandem knowledge! Users may answer, sk
 * Flask
 * HTML
 * CSS
+* Unittest
+* Pytest
 
 ## Features
 
