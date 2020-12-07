@@ -78,7 +78,7 @@ $ python3 server.py
 
 **Window two** Run frontend on local computer
 ```
-npm start
+$ npm start
 ```
 
 #### You may now access the app at localhost:5000 and/or localhost:3000
@@ -87,7 +87,7 @@ npm start
 
 **Make sure you're in the parent project directory (/Tandem-Apprentice-Challenge-2020)**
 
-#### `python3 runtests.py`
+#### `$ python3 runtests.py`
 
 Script to run all Pytest and Unittest files verbosely 
 
