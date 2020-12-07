@@ -85,9 +85,9 @@ $ npm start
 
 ### Running Tests
 
-**Make sure you're in the parent project directory (/Tandem-Apprentice-Challenge-2020)**
-
-#### `$ python3 runtests.py`
+```
+$ python3 runtests.py
+```
 
 Script to run all Pytest and Unittest files verbosely 
 
