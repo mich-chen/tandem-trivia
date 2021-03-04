@@ -85,14 +85,13 @@ $ npm start
 
 #### You may now access the app at localhost:5000 and/or localhost:3000
 
-### Running Tests
+### Running Tests and Coverage
+
+In root directory: 
 
 ```
-$ python3 runtests.py
+$ pytest --cov=. tests/
 ```
-
-Script to run all Pytest and Unittest files verbosely 
-
 
 ## Getting Started with Create React App
 
