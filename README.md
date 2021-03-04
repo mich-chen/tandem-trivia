@@ -90,8 +90,9 @@ $ npm start
 In root directory: 
 
 ```
-$ pytest --cov=. tests/
+$ pytest --cov-report term-missing --cov=. tests/
 ```
+
 
 ## Getting Started with Create React App
 
