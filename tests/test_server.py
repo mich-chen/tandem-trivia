@@ -12,7 +12,7 @@ from server import app
 import helper
 
 
-@patch('server.FILE', 'test_data.json')
+@patch('server.FILE', 'tests/test_data.json')
 class FlaskTests(TestCase):
 
     def setUp(self):
@@ -22,11 +22,11 @@ class FlaskTests(TestCase):
         # show Flask errors that happen during tests
         app.config['TESTING'] = True
         # FILE = 'tests/test_data.json'
-        self.data = helper.open_file('test_data.json')
+        self.data = helper.open_file('tests/test_data.json')
 
     def test_file_path(self):
 
-        self.assertEqual('test_data.json', server.FILE)
+        self.assertEqual('tests/test_data.json', server.FILE)
 
     def test_homepage(self):
 
@@ -44,7 +44,7 @@ class HelperTests(TestCase):
 
     def setUp(self):
 
-        self.data = helper.open_file('test_data.json')
+        self.data = helper.open_file('tests/test_data.json')
 
     def test_open_file(self):
 
