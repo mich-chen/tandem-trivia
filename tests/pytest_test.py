@@ -16,11 +16,11 @@ import helper
 
 @pytest.fixture(autouse=True)
 def file_path():
-    server.FILE = 'test_data.json'
+    server.FILE = 'tests/test_data.json'
     yield server.FILE
 
 def test_file_path_fixture(file_path):
-    assert server.FILE == 'test_data.json'
+    assert server.FILE == 'tests/test_data.json'
     
 
 # ************************** Test Flask App *******************************
