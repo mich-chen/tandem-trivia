@@ -33,6 +33,11 @@ class FlaskTests(TestCase):
         result = self.client.get('/') # get request to homepage
         self.assertIn(b'<title>React App</title>', result.data)
 
+    def test_catchall(self):
+
+        result = self.client.get('/catcha')
+        self.assertIn(b'<title>React App</title>', result.data)
+
     def test_get_questions(self):
 
         results = self.client.get('/api/questions')

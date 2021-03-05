@@ -14,6 +14,7 @@ FILE = 'src/Apprentice_TandemFor400_Data.json'
 
 # catch all
 @app.route('/', defaults={'path': ''})
+@app.route('/<string:path>')
 @app.route('/<path:path>')
 def catch_all(path):
     """Catch all URL routes that don't match specific path."""
