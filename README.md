@@ -87,6 +87,8 @@ $ npm start
 
 ### Running Tests and Coverage
 
+**100% Test Coverage**
+
 In root directory: 
 
 ```
