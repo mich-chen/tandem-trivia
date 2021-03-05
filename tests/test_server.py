@@ -35,7 +35,7 @@ class FlaskTests(TestCase):
 
     def test_catchall(self):
 
-        result = self.client.get('/catcha')
+        result = self.client.get('/catchall_test')
         self.assertIn(b'<title>React App</title>', result.data)
 
     def test_get_questions(self):

@@ -41,6 +41,6 @@ def get_questions():
 
 
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = True # pragma: no cover
     # DebugToolbarExtension(app)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0') # pragma: no cover
